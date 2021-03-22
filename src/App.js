@@ -8,34 +8,49 @@ import React, { useState, createContext } from 'react';
 export const InputContext = createContext();
 
 export default function App() {
-  const [value, setValue] = useState('Results show here');
-  const [error, setError] = useState('');
+  const [value, setValue] = useState('Results show here.');
+  const [userError, setUserError] = useState('Convert almost any number you can think of.');
+  const [isError, setIsError] = useState(false);
 
   function convertInput(params) {
 
     if (params.length < 1 || !params) {
-      setValue('Results show here');
-      setError('');
+      setValue('Results show here.');
+      setUserError('Convert almost any number you can think of.');
+      setIsError(false);
     } else {
       params = params.toUpperCase();
       
       // test for digits only
       if ((/\d/g).test(params)) {
-        setError('');
+        setUserError("You want to convert to Roman numerals.");
+        setIsError(false);
         setValue(toRoman(params));
+
+        if (value.length < 1) {
+          setIsError(true);
+          setUserError("You cant mix the two.");
+        }
       }
 
-      // test for letters only
+      // test for these letters only
       if ((/^[IVXLCDM]+$/i).test(params)) {
-        setError('');
+        setUserError('You want to convert to Arabic numerals, from Roman.');
+        setIsError(false);
         let num = fromRoman(params);
 
         if (num < 0) {
-          setError('Only use roman numerals');
-          setValue('Results show here');
+          setUserError('Only use Roman numerals.');
+          setValue('Results show here.');
+          setIsError(true);
           params = '';
         } else {
           setValue(num);
+
+          if (value.length < 1) {
+            setIsError(true);
+            setUserError("You cant mix the two.");
+          }
         }
       }
       
@@ -44,7 +59,7 @@ export default function App() {
 
   return (
     <>
-      <InputContext.Provider value={{value, error, convertInput}}>
+      <InputContext.Provider value={{value, userError, isError, convertInput}}>
         <section class="hero is-medium is-info">
           <div class="hero-body">
             <p class="title">Arabic Roman</p>
