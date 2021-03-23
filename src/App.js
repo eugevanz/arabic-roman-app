@@ -1,19 +1,20 @@
 import Message from './components/message';
 import InputField from './components/input_field';
-
+// RomanNumerals helper
 import { toRoman, fromRoman } from './helpers/RomanNumerals';
 
 import React, { useState, createContext } from 'react';
-
+// Create the app context here
 export const InputContext = createContext();
 
+// Note: error displaying needs work
 export default function App() {
   const [value, setValue] = useState('Results show here.');
   const [userError, setUserError] = useState('Convert almost any number you can think of.');
   const [isError, setIsError] = useState(false);
 
   function convertInput(params) {
-
+    // There's no user input
     if (params.length < 1 || !params) {
       setValue('Results show here.');
       setUserError('Convert almost any number you can think of.');
@@ -56,7 +57,7 @@ export default function App() {
       
     } 
   }
-
+  // Allow the children access to the context
   return (
     <>
       <InputContext.Provider value={{value, userError, isError, convertInput}}>
