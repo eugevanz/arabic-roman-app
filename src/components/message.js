@@ -7,7 +7,7 @@ export default function Message() {
 
     // Conversion results display here
     return (
-        <article className="message is-dark">
+        <article className="message is-warning">
           <div className="message-body">{value.value}</div>
       </article>
     );

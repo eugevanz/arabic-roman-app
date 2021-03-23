@@ -61,19 +61,20 @@ export default function App() {
   return (
     <>
       <InputContext.Provider value={{value, userError, isError, convertInput}}>
-        <section class="hero is-medium is-info">
+        <section class="hero is-medium is-dark">
           <div class="hero-body">
-            <p class="title">Arabic Roman</p>
+            <p class="title is-1">Arabic Roman</p>
             <p class="subtitle">An ancient converter</p>
           </div>
         </section>
         <br/><br/>
-        <p className="subtitle is-6">
-            In Roman numerals, 1990 is rendered: 1000=M, 900=CM, 90=XC; resulting in MCMXC. 2008 is written as 2000=MM, 8=VIII; or MMVIII.
+        <p className="subtitle is-4">How it works?</p>
+        <p>
+            In Roman numerals, 1990 is rendered: 1000=M, 900=CM, 90=XC; resulting in MCMXC.
             <br/><br/>
-            Enter <b>Arabic</b> numerals below (eg. 1, 2, 3, 4, 5, 6, 7, 8, and 9) to convert to <b>Roman</b> numerals.
+            Enter <strong>Arabic</strong> numerals below (eg. 1, 2, 3, 4, 5, 6, 7, 8, and 9) to convert to <strong>Roman</strong> numerals.
             <br/><br/>
-            You can alternatively enter <b>Roman</b> numerals (eg. MMVIII) to convert to <b>Arabic</b>
+            You can alternatively enter <strong>Roman</strong> numerals (eg. MMVIII) to convert to <strong>Arabic</strong>
         </p>
         <br/><br/>
         <Message/>

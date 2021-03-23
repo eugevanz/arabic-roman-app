@@ -11,7 +11,7 @@ export default function InputField() {
         <div className="field">
           <div className="field-body">
                 <div className="field">
-                <p className={`help ${value.isError ? 'is-danger' : 'is-info'}`}>{value.userError}</p>
+                <p className={`help ${value.isError ? 'is-danger' : 'is-link'}`}>{value.userError}</p>
                 <p className="control">
                     <input id="input_field" className="input" type="email" placeholder="It can be either Arabic or Roman" onChange={event => value.convertInput(event.target.value)}></input>
                 </p>
